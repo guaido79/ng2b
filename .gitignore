@@ -1,0 +1,7 @@
+node_modules/
+typings/
+demo/*.js*
+demo/**/*.js*
+components/**/*.js*
+components/**/*.js*
+ng2b.js*
