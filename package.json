@@ -1,6 +1,7 @@
 {
   "name": "ng-bootstrap",
   "version": "0.0.1-beta.1",
+  "description": "Bootstrap components for Angular2",
   "scripts": {
     "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "tsc": "tsc",
@@ -9,7 +10,8 @@
     "typings": "typings",
     "postinstall": "typings install"
   },
-  "license": "ISC",
+  "author": "Guido Magnini",
+  "license": "MIT",
   "dependencies": {
     "angular2": "2.0.0-beta.13",
     "bootstrap": "^3.3.6",
@@ -21,11 +23,17 @@
   },
   "devDependencies": {
     "concurrently": "^2.0.0",
-    "lite-server": "^2.1.0",
-    "typescript": "^1.8.9",
-    "typings": "^0.7.11",
+    "del": "^2.2.0",
     "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-tsc": "^1.1.4",
     "gulp-tslint": "^3.5.0",
-    "tslint": "^3.6.0"
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.7",
+    "jasmine-core": "^2.2.0",
+    "lite-server": "^2.1.0",
+    "tslint": "^3.6.0",
+    "typescript": "^1.8.9",
+    "typings": "^0.7.11"
   }
 }

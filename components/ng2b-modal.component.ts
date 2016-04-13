@@ -33,24 +33,24 @@ export class Ng2bModalComponent implements AfterViewInit {
 
     @Output() onCancel: EventEmitter<any> = new EventEmitter();
 
-    private modal(show: boolean) {
-        $(this.ng2bmodal.nativeElement).modal({ show: show });
-    }
-    
     ngAfterViewInit() {
         this.modal(this.show);
     }
-    
+
     onConfirmClick(event) {
         this.onConfirm.emit({ originalEvent: event });
     }
-    
+
     onCancelClick(event) {
         this.onCancel.emit({ originalEvent: event });
     }
-    
+
     showDialog(show: boolean) {
         this.show = show;
         this.modal(this.show);
+    }
+
+    private modal(show: boolean) {
+        $(this.ng2bmodal.nativeElement).modal({ show: show });
     }
 }

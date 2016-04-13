@@ -1,8 +1,8 @@
-import {Component, Input, ContentChildren, OnInit, AfterContentInit} from 'angular2/core';
+import {Component, Input, ContentChildren} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {COMMON_DIRECTIVES} from 'angular2/common';
 
-/** 
+/**
  * Enumeration of all the novbar position
  */
 export enum NavbarElementPosition {
@@ -11,7 +11,7 @@ export enum NavbarElementPosition {
     right
 }
 
-/** 
+/**
  * Enumeration for container type
  */
 export enum NavbarElementContainer {
@@ -26,13 +26,13 @@ export enum NavbarElementContainer {
 })
 export class Ng2bNavElementComponent {
 
-    private _position: NavbarElementPosition;
-
-    private _container: NavbarElementContainer;
-
     @Input() active: boolean;
 
     @Input() role: string;
+
+    private _position: NavbarElementPosition;
+
+    private _container: NavbarElementContainer;
 
     @Input('ng2b-position')
     set position(position: string) {
@@ -54,34 +54,17 @@ export class Ng2bNavElementComponent {
 
 }
 
-/*@Component({
-    selector: 'ng2b-navbar-normal-group',
-    template: `
-    <ul class="nav navbar-nav" [ngClass]='getPositionMap()' ><ng-content select='ng2b-navbar-element' ></ng-content></ul>`,
-    directives: [CORE_DIRECTIVES, Ng2bNavbarElementComponent]
-})
-export class Ng2bNavbarUlGroupComponent extends Ng2bNavbarGroupComponent {}
-
-@Component({
-    selector: 'ng2b-navbar-form-group',
-    template: `
-    <form class="navbar-form" [ngClass]='getPositionMap()' role='{{role}}'><ng-content select='ng2b-navbar-element' ></ng-content></form>`,
-    directives: [CORE_DIRECTIVES, Ng2bNavbarElementComponent]
-})
-export class Ng2bNavbarFormGroupComponent extends Ng2bNavbarGroupComponent {
-
-        
-}*/
-
-
 @Component({
     selector: 'ng2b-navbar',
     template: `
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
-        <div class="container-fluid">
+        <div  [class.container-fluid]='fluid' [class.container]='!fluid' >
 
             <div class="navbar-header" *ngIf='showToggle' >
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -118,21 +101,23 @@ export class Ng2bNavbarComponent {
 
     @Input('show-toggle') showToggle: boolean;
 
+    @Input('fluid-layout') fluid: boolean = true;
+
     @ContentChildren(Ng2bNavElementComponent) elements: Ng2bNavElementComponent[];
 
-    positionToEnum(pos: string) : NavbarElementPosition {
+    positionToEnum(pos: string): NavbarElementPosition {
         return NavbarElementPosition[pos];
     }
-    
-    containerToEnum(con: string) : NavbarElementContainer {
+
+    containerToEnum(con: string): NavbarElementContainer {
         return NavbarElementContainer[con];
     }
 
     isExistGroup(position: NavbarElementPosition, container: NavbarElementContainer) {
         let retVal = false;
-        
+
         this.elements.forEach((element: Ng2bNavElementComponent) => {
-            if (element.container === NavbarElementContainer[container] 
+            if (element.container === NavbarElementContainer[container]
                 && element.position === NavbarElementPosition[position]) {
                 retVal = true || retVal;
             }
