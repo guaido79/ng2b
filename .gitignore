@@ -6,4 +6,4 @@ src/npm-debug.log.*
 src/**/*.js
 src/**/*.js.map
 src/ng2b.js
-
+*.log
