@@ -3,13 +3,13 @@ module.exports = function() {
     var buildDir = './build/';
 
     var config = {
-        componentsSrc: [
-            'components/*.ts',
-            'ng2b.ts'
+        ng2bSrc: [
+            'src/components/*.ts',
+            'src/ng2b.ts'
         ],
         demoSrc: ['demo/*.ts'],
         typingsSrc: [
-            'typings/browser.d.ts'
+            'src/typings/browser.d.ts'
         ],
         tscConf: {
             "target": "es5",

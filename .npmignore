@@ -1,0 +1,8 @@
+.vscode
+node_modules
+src
+.gitignore
+.npmignore
+gulp.config.js
+gulpfile.js
+tslint.json

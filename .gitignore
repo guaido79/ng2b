@@ -1,7 +1,9 @@
 node_modules/
-typings/
-demo/*.js*
-demo/**/*.js*
-components/**/*.js*
-components/**/*.js*
-ng2b.js*
+src/node_modules/
+src/typings/
+dist/
+src/npm-debug.log.*
+src/**/*.js
+src/**/*.js.map
+src/ng2b.js
+
