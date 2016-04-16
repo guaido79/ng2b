@@ -8,6 +8,7 @@ module.exports = function() {
             'src/ng2b.ts'
         ],
         demoSrc: ['demo/*.ts'],
+        typingsConf: 'typings.json',
         typingsSrc: [
             'typings/browser.d.ts'
         ],

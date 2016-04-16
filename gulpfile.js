@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var tslint = require("gulp-tslint");
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
+var gulpTypings = require("gulp-typings");
 var typescript = require('gulp-tsc');
 var config = require('./gulp.config')();
 var del = require('del');
@@ -16,7 +17,12 @@ gulp.task("tslint-json", () =>
 );
 
 gulp.task('build', function(callback) {
-    runSequence('clean:all', 'compile', ['uglify', 'copy-definition'], 'clean:build-dir',  callback);
+    runSequence('clean:all', 'install-typings', 'compile', ['uglify', 'copy-definition'], 'clean:build-dir',  callback);
+});
+
+gulp.task("install-typings",function(){
+    return gulp.src(config.typingsConf)
+        .pipe(gulpTypings());
 });
 
 gulp.task('compile', function() {
