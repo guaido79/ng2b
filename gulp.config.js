@@ -9,7 +9,7 @@ module.exports = function() {
         ],
         demoSrc: ['demo/*.ts'],
         typingsSrc: [
-            'src/typings/browser.d.ts'
+            'typings/browser.d.ts'
         ],
         tscConf: {
             "target": "es5",
