@@ -2,8 +2,11 @@
 node_modules
 src
 .travis.yml
+typings
+.travis.yml
 .gitignore
 .npmignore
 gulp.config.js
 gulpfile.js
 tslint.json
+typings.json
