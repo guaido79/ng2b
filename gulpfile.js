@@ -17,7 +17,7 @@ gulp.task("tslint-json", () =>
 );
 
 gulp.task('build', function(callback) {
-    runSequence('clean:all', 'install-typings', 'compile', ['uglify', 'copy-definition'], 'clean:build-dir',  callback);
+    runSequence('clean:all', 'install-typings', 'compile', ['uglify', 'copy-definition', 'copy-doc'], 'clean:build-dir',  callback);
 });
 
 gulp.task("install-typings",function(){
@@ -51,4 +51,9 @@ gulp.task('clean:build-dir', function() {
 gulp.task('copy-definition', function() {
     return gulp.src([config.buildDir + '*.d.ts', config.buildDir + '**/*.d.ts'])
         .pipe(gulp.dest(config.distDir))
+})
+
+gulp.task('copy-doc', function() {
+    return gulp.src('*.md')
+        .pipe(gulp.dest(config.npmRelease))
 })

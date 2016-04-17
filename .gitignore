@@ -1,10 +1,11 @@
+npm-release/dist
+npm-release/*.md
 node_modules/
-src/node_modules/
-src/typings/
-dist/
-src/npm-debug.log.*
+demo/*.js
+demo/*.js.map
+src/*.js
+src/*.js.map
 src/**/*.js
 src/**/*.js.map
-src/ng2b.js
 typings
 *.log

@@ -1,6 +1,7 @@
 module.exports = function() {
 
     var buildDir = './build/';
+    var npmRelease = './npm-release/';
 
     var config = {
         ng2bSrc: [
@@ -27,7 +28,8 @@ module.exports = function() {
             buildDir + '*.js',
             buildDir + '/**/*.js',
         ],
-        distDir: './dist/',
+        npmRelease: npmRelease,
+        distDir: npmRelease + 'dist/',
     }
 
     return config;

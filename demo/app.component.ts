@@ -1,5 +1,5 @@
 import {Component, ViewChild} from 'angular2/core';
-import {NG2B_DIRECTIVES, Ng2bModalComponent} from '../ng2b';
+import {NG2B_DIRECTIVES, Ng2bModalComponent} from '../src/ng2b';
 
 @Component({
     selector: 'my-app',
