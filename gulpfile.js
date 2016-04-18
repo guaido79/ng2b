@@ -41,7 +41,7 @@ gulp.task('uglify', function() {
 });
 
 gulp.task('clean:all', function() {
-    return del.sync([config.buildDir, config.distDir]);
+    return del.sync([config.buildDir, config.distDir, "!" + config.npmRelease]);
 });
 
 gulp.task('clean:build-dir', function() {

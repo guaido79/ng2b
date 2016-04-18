@@ -15,15 +15,7 @@ export enum Ng2bButtonType {
     selector: 'ng2b-button',
     template: `
     <button #ng2bbutton class='btn'
-        [ngClass]="{
-            'btn-default': btnDefault,
-            'btn-primary': btnPrimary,
-            'btn-success': btnSuccess,
-            'btn-info': btnInfo,
-            'btn-warning': btnWarning,
-            'btn-danger': btnDanger,
-            'btn-link': btnLink,
-            'disabled': disabled}" type='button' class='btn'>{{text}}</button>`,
+        [ngClass]='btnClasses' type='button' class='btn'>{{text}}</button>`,
     directives: [NgClass]
 })
 export class Ng2bButtonComponent implements OnInit {
@@ -34,25 +26,30 @@ export class Ng2bButtonComponent implements OnInit {
 
     @Input() text: string;
 
-    @Input('button-type') buttonType: string;
+    btnClasses: any;
 
-    private btnDefault: boolean;
-    private btnPrimary: boolean;
-    private btnSuccess: boolean;
-    private btnInfo: boolean;
-    private btnWarning: boolean;
-    private btnDanger: boolean;
-    private btnLink: boolean;
+    _buttonType: Ng2bButtonType;
 
+    @Input('button-type')
+    set buttonType(value: string) {
+        this._buttonType = Ng2bButtonType[value];
+    }
+
+    get buttonType(): string {
+        return Ng2bButtonType[this._buttonType];
+    }
 
     ngOnInit() {
-        this.btnDefault = this.buttonType === Ng2bButtonType[Ng2bButtonType.DEFAULT];
-        this.btnPrimary = this.buttonType === Ng2bButtonType[Ng2bButtonType.PRIMARY];
-        this.btnSuccess = this.buttonType === Ng2bButtonType[Ng2bButtonType.SUCCESS];
-        this.btnInfo = this.buttonType === Ng2bButtonType[Ng2bButtonType.INFO];
-        this.btnWarning = this.buttonType === Ng2bButtonType[Ng2bButtonType.WARNING];
-        this.btnDanger = this.buttonType === Ng2bButtonType[Ng2bButtonType.DANGER];
-        this.btnLink = this.buttonType === Ng2bButtonType[Ng2bButtonType.LINK];
+        this.btnClasses =  {
+            'btn-default': this._buttonType === Ng2bButtonType.DEFAULT,
+            'btn-primary': this._buttonType === Ng2bButtonType.PRIMARY,
+            'btn-success': this._buttonType === Ng2bButtonType.SUCCESS,
+            'btn-info': this._buttonType === Ng2bButtonType.INFO,
+            'btn-warning': this._buttonType === Ng2bButtonType.WARNING,
+            'btn-danger': this._buttonType === Ng2bButtonType.DANGER,
+            'btn-link': this._buttonType === Ng2bButtonType.LINK,
+            'disabled': this.disabled
+        };
     }
 }
 

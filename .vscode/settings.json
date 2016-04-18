@@ -1,9 +1,11 @@
 // Place your settings in this file to overwrite default and user settings.
 {
     "files.exclude": {
-		"ng2b/*.js": true,
-        "ng2b/*.js.map": true,
+        "src/**/*.js": true,
+        "src/**/*.js.map": true,
+		"src/*.js": true,
+        "src/*.js.map": true,
 		"demo/*.js": true,
         "demo/*.js.map": true
-	},
+	}
 }
