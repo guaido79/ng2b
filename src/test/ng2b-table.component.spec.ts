@@ -1,11 +1,12 @@
+import {provide} from 'angular2/core';
 import {Ng2bTableComponent} from '../components/ng2b-table.component';
-import {TestComponentBuilder, beforeEachProviders, inject, beforeEach} from 'angular2/testing';
+import {setBaseTestProviders, TestComponentBuilder, beforeEachProviders, inject, beforeEach, MockDirectiveResolver} from 'angular2/testing';
+
 
 describe('Ng2bTableComponent', () => {
 
-  const HTML_RESULT = `
-  <div class="bs-example" data-example-id="hoverable-table">
-      <table class="table table-hover">
+    const HTML_RESULT = `
+      <table class="table table-bordered table-hover">
           <thead>
               <tr>
                   <th>#</th>
@@ -34,29 +35,28 @@ describe('Ng2bTableComponent', () => {
                   <td>@twitter</td>
               </tr>
           </tbody>
-      </table>
-  </div>`
+      </table>`;
 
-  let tcb;
+    let tcb;
 
-  beforeEachProviders(() => [
-    TestComponentBuilder,
-    Ng2bTableComponent
-  ]);
+    beforeEachProviders(() => [
+        TestComponentBuilder,
+        Ng2bTableComponent
+    ]);
 
-  beforeEach(inject([TestComponentBuilder], _tcb => {
-    tcb = _tcb
-  }));
+    beforeEach(inject([TestComponentBuilder], _tcb => {
+        tcb = _tcb
+    }));
 
-  it('should render Bootstrap Table', done => {
+    it('should render Bootstrap Table', done => {
 
-    tcb.createAsync(Ng2bTableComponent).then(fixture => {
-      let ng2bTable = fixture.componentInstance;
-      let ng2bTableNativeElement = fixture.nativeElement;
-      fixture.detectChanges(); //trigger change detection
-      expect(ng2bTableNativeElement.innetHtml).toEqual(HTML_RESULT);
-      done();
-    })
-      .catch(e => done.fail(e));
-  });
+        tcb.createAsync(Ng2bTableComponent).then(fixture => {
+            let ng2bTable = fixture.componentInstance;
+            let ng2bTableNativeElement = fixture.nativeElement;
+            fixture.detectChanges(); //trigger change detection
+            expect(ng2bTableNativeElement.innerHTML.replace(/ /g,'')).toEqual(HTML_RESULT.replace(/ /g,''));
+            done();
+        })
+            .catch(e => done.fail(e));
+    });
 });

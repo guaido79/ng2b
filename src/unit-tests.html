@@ -2,11 +2,14 @@
 <html>
 
 <head>
-  <meta http-equiv="content-type" content="text/html;charset=utf-8">
-  <title>Ng App Unit Tests</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>Ng App Unit Tests</title>
 
-  <link rel="stylesheet" href="../node_modules/jasmine-core/lib/jasmine-core/jasmine.css">
+    <link rel="stylesheet" href="../node_modules/jasmine-core/lib/jasmine-core/jasmine.css">
 
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- 1. Load libraries -->
     <!-- IE required polyfills, in this exact order -->
     <script src="../node_modules/es6-shim/es6-shim.min.js"></script>
@@ -41,7 +44,9 @@
 
     <script>
         Promise.all([
-          System.import('test/ng2b-table.component.spec')
+          System.import('test/boot'),
+          System.import('test/ng2b-table.component.spec'),
+          System.import('test/ng2b-button.component.spec')
         ])
         .then(window.onload, console.error.bind(console));
     </script>

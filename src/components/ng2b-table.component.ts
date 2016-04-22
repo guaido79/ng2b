@@ -3,7 +3,7 @@ import {Component} from 'angular2/core';
 @Component({
     selector: 'ng2b-table',
     template: `
-    <table class="table table-bordered">
+    <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>#</th>
@@ -21,7 +21,8 @@ import {Component} from 'angular2/core';
             </tr>
             <tr>
                 <th scope="row">2</th>
-                <td>Jacob</td> <td>Thornton</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
                 <td>@fat</td>
             </tr>
             <tr>
